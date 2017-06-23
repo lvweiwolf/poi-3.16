@@ -131,11 +131,10 @@ public class AbstractWordUtils
 
     static void compactChildNodesR( Element parentElement, String childTagName )
     {
-        NodeList childNodes = parentElement.getChildNodes();
-        for ( int i = 0; i < childNodes.getLength() - 1; i++ )
+        for ( int i = 0; i <  parentElement.getChildNodes().getLength() - 1; i++ )
         {
-            Node child1 = childNodes.item( i );
-            Node child2 = childNodes.item( i + 1 );
+            Node child1 =  parentElement.getChildNodes().item( i );
+            Node child2 =  parentElement.getChildNodes().item( i + 1 );
             if ( !WordToFoUtils.canBeMerged( child1, child2, childTagName ) )
                 continue;
 
@@ -146,10 +145,9 @@ public class AbstractWordUtils
             i--;
         }
 
-        childNodes = parentElement.getChildNodes();
-        for ( int i = 0; i < childNodes.getLength() - 1; i++ )
+        for ( int i = 0; i <  parentElement.getChildNodes().getLength() - 1; i++ )
         {
-            Node child = childNodes.item( i );
+            Node child =  parentElement.getChildNodes().item( i );
             if ( child instanceof Element )
             {
                 compactChildNodesR( (Element) child, childTagName );
