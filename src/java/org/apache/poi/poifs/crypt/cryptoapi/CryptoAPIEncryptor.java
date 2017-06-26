@@ -106,7 +106,7 @@ public class CryptoAPIEncryptor extends Encryptor implements Cloneable {
     }    
 
     @Override
-    public ChunkedCipherOutputStream getDataStream(DirectoryNode dir)
+    public OutputStream getDataStream(DirectoryNode dir)
     throws IOException, GeneralSecurityException {
         throw new IOException("not supported");
     }

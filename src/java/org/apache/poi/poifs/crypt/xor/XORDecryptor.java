@@ -69,7 +69,7 @@ public class XORDecryptor extends Decryptor implements Cloneable {
     }
 
     @Override
-    public ChunkedCipherInputStream getDataStream(DirectoryNode dir) throws IOException, GeneralSecurityException {
+    public InputStream getDataStream(DirectoryNode dir) throws IOException, GeneralSecurityException {
         throw new EncryptedDocumentException("not supported");
     }
 

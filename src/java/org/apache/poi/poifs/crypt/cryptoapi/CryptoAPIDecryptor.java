@@ -139,7 +139,7 @@ public class CryptoAPIDecryptor extends Decryptor implements Cloneable {
     }
 
     @Override
-    public ChunkedCipherInputStream getDataStream(DirectoryNode dir)
+    public InputStream getDataStream(DirectoryNode dir)
     throws IOException, GeneralSecurityException {
         throw new IOException("not supported");
     }

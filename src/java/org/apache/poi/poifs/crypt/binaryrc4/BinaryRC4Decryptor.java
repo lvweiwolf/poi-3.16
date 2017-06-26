@@ -131,7 +131,7 @@ public class BinaryRC4Decryptor extends Decryptor implements Cloneable {
 
     @Override
     @SuppressWarnings("resource")
-    public ChunkedCipherInputStream getDataStream(DirectoryNode dir) throws IOException,
+    public InputStream getDataStream(DirectoryNode dir) throws IOException,
             GeneralSecurityException {
         DocumentInputStream dis = dir.createDocumentInputStream(DEFAULT_POIFS_ENTRY);
         length = dis.readLong();
