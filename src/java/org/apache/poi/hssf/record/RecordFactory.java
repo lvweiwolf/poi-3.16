@@ -66,7 +66,7 @@ import org.apache.poi.hssf.record.pivottable.ViewSourceRecord;
 public final class RecordFactory {
     private static final int NUM_RECORDS = 512;
 
-    private interface I_RecordCreator {
+    public interface I_RecordCreator {
         Record create(RecordInputStream in);
 
         Class<? extends Record> getRecordClass();

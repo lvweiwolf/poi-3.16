@@ -643,7 +643,7 @@ public final class BiffViewer {
 		}
 	}
 
-	private interface IBiffRecordListener {
+	public interface IBiffRecordListener {
 
 		void processRecord(int globalOffset, int recordCounter, int sid, int dataSize, byte[] data);
 
