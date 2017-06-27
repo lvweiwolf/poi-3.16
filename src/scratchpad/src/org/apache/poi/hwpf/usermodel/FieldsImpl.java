@@ -120,7 +120,7 @@ public class FieldsImpl implements Fields
         return Collections.<Field> unmodifiableCollection( map.values() );
     }
 
-    public FieldImpl getFieldByStartOffset( FieldsDocumentPart documentPart,
+    public Field getFieldByStartOffset( FieldsDocumentPart documentPart,
             int offset )
     {
         Map<Integer, FieldImpl> map = _fieldsByOffset.get( documentPart );
