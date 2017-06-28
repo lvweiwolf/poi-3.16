@@ -2,7 +2,7 @@ package org.apache.poi.sl.draw;
 
 import java.awt.RenderingHints;
 
-class DrawableHint extends RenderingHints.Key {
+public class DrawableHint extends RenderingHints.Key {
     public DrawableHint(int id) {
         super(id);
     }
