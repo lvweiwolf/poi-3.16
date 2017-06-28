@@ -46,8 +46,10 @@ public final class HSSFPalette {
     public HSSFColor getColor(short index)
     {
         //Handle the special AUTOMATIC case
-        if (index == HSSFColorPredefined.AUTOMATIC.getIndex()) {
-            return HSSFColorPredefined.AUTOMATIC.getColor();
+        HSSFColorPredefined automatic = HSSFColorPredefined.AUTOMATIC;
+        short autIndex = automatic.getIndex();
+        if (index == autIndex) {
+            return automatic.getColor();
         }
         byte[] b = _palette.getColor(index);
         return (b == null) ? null : new CustomColor(index, b);
