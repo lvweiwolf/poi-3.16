@@ -23,8 +23,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-
-
 import org.apache.poi.ss.usermodel.Color;
 import org.apache.poi.util.Removal;
 
@@ -44,8 +42,7 @@ public class HSSFColor implements Color {
     private static Map<Integer,HSSFColor> indexHash;
     private static Map<HSSFColorPredefined,HSSFColor> enumList;
 
-    private android.graphics.Color color;
-
+    private java.awt.Color color;
     private int index;
     private int index2;
 
@@ -113,8 +110,7 @@ public class HSSFColor implements Color {
         private HSSFColor color;
 
         HSSFColorPredefined(int index, int index2, int rgb) {
-            android.graphics.Color c = android.graphics.Color.valueOf(rgb);
-            this.color = new HSSFColor(index, index2, c);
+            this.color = new HSSFColor(index, index2, new java.awt.Color(rgb));
         }
 
         /**
@@ -157,10 +153,10 @@ public class HSSFColor implements Color {
     /** Creates a new instance of HSSFColor */
     public HSSFColor() {
         // automatic index
-        this(0x40, -1, android.graphics.Color.valueOf(android.graphics.Color.BLACK));
+        this(0x40, -1, java.awt.Color.BLACK);
     }
 
-    public HSSFColor(int index, int index2, android.graphics.Color color) {
+    public HSSFColor(int index, int index2, java.awt.Color color) {
         this.index = index;
         this.index2 = index2;
         this.color = color;
@@ -174,7 +170,7 @@ public class HSSFColor implements Color {
      */
     public static final synchronized Map<Integer,HSSFColor> getIndexHash() {
         if(indexHash == null) {
-           indexHash = Collections.unmodifiableMap( createColorsByIndexMap() );
+            indexHash = Collections.unmodifiableMap( createColorsByIndexMap() );
         }
 
         return indexHash;
@@ -186,7 +182,7 @@ public class HSSFColor implements Color {
      *  statically cached imuatable map of colours.
      */
     public static final Map<Integer,HSSFColor> getMutableIndexHash() {
-       return createColorsByIndexMap();
+        return createColorsByIndexMap();
     }
 
     private static Map<Integer,HSSFColor> createColorsByIndexMap() {
@@ -320,7 +316,7 @@ public class HSSFColor implements Color {
      */
 
     public short [] getTriplet() {
-        return new short[] { (short)color.red(), (short)color.green(), (short)color.blue() };
+        return new short[] { (short)color.getRed(), (short)color.getGreen(), (short)color.getBlue() };
     }
 
     /**
@@ -329,9 +325,9 @@ public class HSSFColor implements Color {
      */
 
     public String getHexString() {
-        return (Integer.toHexString((short)color.red() * 0x101) + ":" +
-               Integer.toHexString((short)color.green() * 0x101) + ":" +
-               Integer.toHexString((short)color.blue() * 0x101)).toUpperCase(Locale.ROOT);
+        return (Integer.toHexString(color.getRed()*0x101) + ":" +
+                Integer.toHexString(color.getGreen()*0x101) + ":" +
+                Integer.toHexString(color.getBlue()*0x101)).toUpperCase(Locale.ROOT);
     }
 
     /**
